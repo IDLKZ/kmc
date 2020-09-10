@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <base href="/">
     <title>Казахстанская Ипотечная Компания</title>
     <meta name="title" content="Главная" />
     <meta name="keywords" content="аренда с последующим выкупом, ипотечное кредитование, выкуп прав требований, выпуск облигаций. " />
