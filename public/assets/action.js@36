@@ -1,0 +1,75 @@
+$(function() {
+    $('header').on('click', '#popup-menu-link', function() {
+        showPopup();
+    });
+
+    $('header').on('click', '#mob-popup-menu-link',function() {
+        showPopup();
+    });
+
+    $('#popup-menu').on('click', '#pop-mob-close', function() {
+        showPopup();
+    });
+
+    function showPopup() {
+        var elem = $('#popup-menu');
+        if (elem.hasClass('closed')) {
+            elem.show().removeClass('closed');
+        }
+        else {
+            elem.hide().addClass('closed');
+        }
+    }
+
+    $(document).on('click', '.lightbox', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+
+    // submenu expand
+    if ($('.submenu-expander').length) {
+        $('.submenu').on('click', '.submenu-expander', function(e) {
+            e.preventDefault();
+            if ($(this).hasClass('expanded')) {
+                $(this).removeClass('expanded').parent().find('.submenu-list').hide(150);
+            }
+            else {
+                $(this).addClass('expanded').parent().find('.submenu-list').show(150);
+            }
+        });
+    }
+
+    // popup expand
+    if ($('#popup-menu').length) {
+        $('#popup-menu').on('click', '.popex', function() {
+            if ($(this).hasClass('expanded')) {
+                $(this).removeClass('expanded').parent().parent().find('.pop-submenu').hide(150);
+            }
+            else {
+                $(this).addClass('expanded').parent().parent().find('.pop-submenu').show(150);
+            }
+        });
+    }
+
+    // faq
+    if ($('.spoiler').length) {
+        $('.spoiler-info').hide();
+        $('.spoiler').on('click', '.sp-mark', function(e) {
+            e.preventDefault();
+            $(this).parent().find('.spoiler-info').show();
+            return false;
+        });
+    }
+
+    // tabs
+    if ($('.nav-tabs-content').length) {
+        $('.nav-tabs').on('click', 'a', function() {
+            $(this).parent().parent().find('.nav-link').removeClass('active');
+            $(this).addClass('active');
+
+            $('.nav-tabs-content-item').hide();
+            $('.nav-tabs-content-item-'+$(this).data('rel')).show();
+
+        });
+    }
+});
